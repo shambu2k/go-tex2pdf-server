@@ -7,7 +7,6 @@ A lightweight web service that converts LaTeX documents to PDF files using pdfla
 - Simple RESTful API to convert LaTeX to PDF
 - Accepts LaTeX content via JSON payload
 - Returns generated PDF as binary response
-- Configurable via environment variables
 - Docker support for easy deployment
 
 ## Quick Start
