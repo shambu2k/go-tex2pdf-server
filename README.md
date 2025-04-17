@@ -15,10 +15,13 @@ A lightweight web service that converts LaTeX documents to PDF files using pdfla
 
 ```bash
 # Build the Docker image
-docker build -t tex2pdf-server .
+docker build -t go-tex2pdf-server .
+
+# Or pull image
+docker pull ghcr.io/shambu2k/go-tex2pdf-server:latest
 
 # Run the container
-docker run -p 8080:8080 tex2pdf-server
+docker run -p 8080:8080 go-tex2pdf-server
 ```
 
 ### Running locally
