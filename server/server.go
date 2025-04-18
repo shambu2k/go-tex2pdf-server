@@ -5,7 +5,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"runtime"
 
 	"go-tex2pdf/converter"
 )
@@ -64,7 +63,7 @@ func (s *Server) HandleRequests() http.Handler {
 	})
 
 	mux.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "%s (Go: %s)\n", s.version, runtime.Version())
+		fmt.Fprintf(w, "%s\n", s.version)
 	})
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -5,7 +5,7 @@ A lightweight web service that converts LaTeX documents to PDF files using pdfla
 ## Features
 
 - Simple RESTful API to convert LaTeX to PDF
-- Accepts LaTeX content via JSON payload
+- Accepts raw LaTeX content in request body
 - Returns generated PDF as binary response
 - Docker support for easy deployment
 
@@ -14,24 +14,24 @@ A lightweight web service that converts LaTeX documents to PDF files using pdfla
 ### Using Docker
 
 ```bash
-# Build the Docker image
-docker build -t go-tex2pdf-server .
+# Pull from Docker Hub
+docker pull shambu2k/go-tex2pdf-server:latest
 
-# Or pull image
+# Or pull from GitHub Container Registry
 docker pull ghcr.io/shambu2k/go-tex2pdf-server:latest
 
 # Run the container
-docker run -p 8080:8080 go-tex2pdf-server
+docker run -p 8080:8080 shambu2k/go-tex2pdf-server:latest
 ```
 
 ### Running locally
 
-1. Ensure you have Go installed (version 1.18 or higher)
+1. Ensure you have Go installed (version 1.23 or higher)
 2. Install pdflatex and required LaTeX packages:
    ```bash
    # For Ubuntu/Debian
    apt-get install texlive-latex-base texlive-fonts-recommended texlive-latex-extra
-
+   
    # For macOS using Homebrew
    brew install --cask mactex
    
@@ -50,20 +50,15 @@ docker run -p 8080:8080 go-tex2pdf-server
 
 **Endpoint**: `POST /convert`
 
-**Request Body**:
-```json
-{
-  "tex": "\\documentclass{article}\\begin{document}Hello World!\\end{document}"
-}
-```
+**Request Body**: Raw LaTeX content
 
 **Response**: Binary PDF file
 
 **Example**:
 ```bash
 curl -X POST http://localhost:8080/convert \
-  -H "Content-Type: application/json" \
-  -d '{"tex":"\\documentclass{article}\\begin{document}Hello World!\\end{document}"}' \
+  -H "Content-Type: text/plain" \
+  -d '\documentclass{article}\begin{document}Hello World!\end{document}' \
   --output document.pdf
 ```
 
@@ -72,6 +67,12 @@ curl -X POST http://localhost:8080/convert \
 **Endpoint**: `GET /version`
 
 **Response**: Version string
+
+### Root Path
+
+**Endpoint**: `GET /`
+
+**Response**: Welcome message with basic API usage instructions
 
 ## License
 

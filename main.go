@@ -8,7 +8,7 @@ import (
 	"go-tex2pdf/server"
 )
 
-const Version = "0.1.0"
+const Version = "0.2.0"
 
 func main() {
 	texConverter := converter.New(
