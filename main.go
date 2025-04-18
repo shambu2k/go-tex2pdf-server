@@ -12,7 +12,7 @@ const Version = "0.1.0"
 
 func main() {
 	texConverter := converter.New(
-		"/usr//bin/pdflatex",
+		"/usr/bin/pdflatex",
 		1,
 		"/my/asset/dir:/my/other/asset/dir",
 	)
