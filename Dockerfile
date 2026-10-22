@@ -1,7 +1,7 @@
 # Docker file for go serverless
 
 # Use the official Golang image as a base image
-FROM golang:1.23
+FROM golang:1.26
 
 # Install TeX Live for pdflatex and other dependencies
 RUN apt-get update && apt-get install -y \
